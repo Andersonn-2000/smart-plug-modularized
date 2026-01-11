@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 // -- PINOUT --
-#define VOLATGE_SENSOR_PIN 34
+#define VOLTAGE_SENSOR_PIN 34
 #define CURRENT_SENSOR_PIN 35
 #define DHT_SENSOR_PIN 4
 #define RELAY_PIN 13
