@@ -2,6 +2,6 @@
 #define WEB_SERVER_H
 #include "data_structures.h"
 
-void vTaskWebServer(void* pvParameters);
+void vTaskServer(void* pvParameters);
 
 #endif
