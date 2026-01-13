@@ -3,9 +3,11 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "freertos/event_groups.h"
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
+extern EventGroupHandle_t xWatchdogGroupHandle;
 extern QueueHandle_t xTariffDataQueue;
 
 void vTaskTariffUpdate(void* pvParameters) {
@@ -28,7 +30,7 @@ void vTaskTariffUpdate(void* pvParameters) {
                 JsonArray records = result["records"];
                 JsonObject firstRecord = records[0];
 
-                tariffData.flagName = String(firstRecord["NomBandeiraAcionada"].as<char*>());
+                tariffData.flagName = firstRecord["NomBandeiraAcionada"].as<String>();
                 tariffData.flagValue = firstRecord["VlrAdicionalBandeira"].as<float>();
                 tariffData.tariffOK = true;
 
@@ -47,6 +49,7 @@ void vTaskTariffUpdate(void* pvParameters) {
 
         http.end();
 
+        xEventGroupSetBits(xWatchdogGroupHandle, TASK_ID_ANEEL);
         // Update once a day
         vTaskDelay(pdMS_TO_TICKS(1000 * 60 * 60 * 24));
     }
