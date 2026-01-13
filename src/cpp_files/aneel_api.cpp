@@ -21,7 +21,7 @@ void vTaskTariffUpdate(void* pvParameters) {
         if (httpCode > 0) {
             if (httpCode == HTTP_CODE_OK) {
                 String payload = http.getString();
-                DynamicJsonDocument doc(1024);
+                JsonDocument doc;
                 deserializeJson(doc, payload);
 
                 JsonObject result = doc["result"];
