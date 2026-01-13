@@ -59,7 +59,7 @@ void setup() {
     xTaskCreate(vTaskTemperatureMonitoring, "Temperature Monitor", 4096, NULL, 2, NULL);
     xTaskCreate(vTaskCostCalculation, "Cost Calculator", 4096, NULL, 2, NULL);
     xTaskCreate(vTaskTariffUpdate, "ANEEL API", 8192, NULL, 1, NULL);
-    xTaskCreate(vTaskWebServer, "Web Server", 8192, NULL, 1, NULL);
+    xTaskCreate(vTaskServer, "Web Server", 8192, NULL, 1, NULL);
     xTaskCreate(vTaskWatchdog, "Task Watchdog", 4096, NULL, 1, NULL);
 
     Serial.println("System initialized. Waiting for WiFi connection...");
