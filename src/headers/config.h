@@ -8,8 +8,8 @@
 #define RELAY_PIN 13
 
 // -- WIFI --
-#define WIFI_SSID ""
-#define WIFI_PASSPHRASE ""
+#define WIFI_SSID "Nuclic"
+#define WIFI_PASSPHRASE "9azGDfy^15"
 #define WEB_PORT_SERVER 80
 
 // -- SENSOR SETTINGS --
